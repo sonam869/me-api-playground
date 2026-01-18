@@ -1,0 +1,85 @@
+.project-grid {
+  display: grid;
+  /* Responsive grid that adjusts based on screen size */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.project-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  /* Visual accent matching the theme colors */
+  border-left: 5px solid #667eea;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.projTitle {
+  font-size: 1.2rem;
+  color: #2d3436;
+  font-weight: 700;
+  margin: 0;
+}
+
+.projDesc {
+  font-size: 0.95rem;
+  color: #636e72;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Ensures tech badges stay at the bottom if descriptions vary in length */
+}
+
+/* Skill tags within the project card */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tech-badge {
+  background: #f0f2f5; 
+  color: #764ba2;
+  padding: 4px 12px; 
+  border-radius: 15px;
+  font-size: 12px; 
+  font-weight: bold;
+}
+
+/* Edit button styling */
+.edit-project-btn {
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.edit-project-btn:hover {
+  background-color: #f1f2f6;
+}
+
+/* Links styling */
+.project-links a {
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.project-links a:hover {
+  color: #667eea !important;
+  text-decoration: underline !important;
+}
