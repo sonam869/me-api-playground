@@ -9,6 +9,7 @@ router.get('/projects', profileController.getProjects);
 router.get('/search', profileController.searchProjects);
 router.get('/skills/top', profileController.getTopSkills);
 router.put('/projects/:projectId', profileController.updateProject); // 👈 For the Edit feature
+router.post('/projects', profileController.addProject);
 
 module.exports = router;
 

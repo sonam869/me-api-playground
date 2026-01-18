@@ -110,3 +110,19 @@ exports.updateProject = async (req, res) => {
       res.status(400).json({ error: "Update failed" });
     }
 };
+// 1.a POST /projects - Add a new project to your profile
+exports.addProject = async (req, res) => {
+  try {
+    const profile = await Profile.findOne();
+    if (!profile) return res.status(404).json({ error: "Profile not found" });
+
+    // Pushes the new project object into the projects array
+    profile.projects.push(req.body); 
+    await profile.save();
+    
+    // Return the newly added project
+    res.status(201).json(profile.projects[profile.projects.length - 1]);
+  } catch (err) {
+    res.status(400).json({ error: "Failed to add project", details: err.message });
+  }
+};
