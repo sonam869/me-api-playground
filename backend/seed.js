@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Profile = require('./models/Profile');
 
 const myData = {
-  name: "Sonam Warkade", // Your actual name
+  name: "Sonam Warkade",
   email: "sonuwarkade28@gmail.com", 
   education: "B.Tech in Computer Science, NIT Delhi (5th Semester)", 
   skills: ["Python", "Java", "Node.js", "Express.js", "MongoDB", "Data Analytics", "Machine Learning"], 
@@ -11,17 +11,16 @@ const myData = {
     {
       title: "Mess Feedback System",
       description: "A centralized platform designed to collect and analyze student feedback on campus mess facilities to improve food quality and service.",
-      links: "https://github.com/sonam869", // actual GitHub base
+      links: "https://github.com/sonam869",
       tech: ["Java", "MySQL", "Android", "Data Analytics"]
     },
     {
       title: "Energy Power Consumption Forecasting",
       description: "Time-series forecasting model using XGBoost and LSTM to predict energy usage patterns with high accuracy.",
-      links: "https://github.com/sonam869", //actual GitHub
+      links: "https://github.com/sonam869",
       tech: ["Python", "Machine Learning", "XGBoost", "LSTM"]
     }
   ],
-  
   work: [
     {
       company: "Your College/Lab",
@@ -37,15 +36,21 @@ const myData = {
   }
 };
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(async () => {
-    console.log("Connected to MongoDB Atlas for seeding...");
-    await Profile.deleteMany({}); 
-    await Profile.create(myData);
-    console.log("Seed data (including Work & Projects) successfully pushed!");
-    process.exit();
-  })
-  .catch(err => {
-    console.error("Seeding error:", err);
-    process.exit(1);
-  });
+// Export the data for server.js
+module.exports = { myData };
+
+// Keep your existing standalone seeding logic
+if (require.main === module) {
+  mongoose.connect(process.env.MONGO_URI)
+    .then(async () => {
+      console.log("Connected to MongoDB Atlas for seeding...");
+      await Profile.deleteMany({}); 
+      await Profile.create(myData);
+      console.log("Seed data successfully pushed!");
+      process.exit();
+    })
+    .catch(err => {
+      console.error("Seeding error:", err);
+      process.exit(1);
+    });
+}
