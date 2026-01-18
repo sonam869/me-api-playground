@@ -7,7 +7,7 @@ import SearchBar from './components/SearchBar';
 import ProjectForm from './components/ProjectForm';
 import './styles/App.css';
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://me-api-playground-backend.onrender.com/api";
 
 function App() {
   // 1. All States
