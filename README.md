@@ -52,15 +52,6 @@ The platform utilizes a centralized **Profile Collection** to ensure data integr
 
 ---
 
-## 📡 API Endpoints (Live Verification)
-
-You can verify the status and data of the production server using the following endpoints:
-
-| Feature | Endpoint | Description | Status |
-| --- | --- | --- | --- |
-| **System Health** | [`/api/health`](https://www.google.com/search?q=%5Bhttps://me-api-playground-jmou.onrender.com/api/health%5D(https://me-api-playground-jmou.onrender.com/api/health)) | Checks if the server and database are online. |  |
-| **Profile Data** | [`/api/profile`](https://www.google.com/search?q=%5Bhttps://me-api-playground-jmou.onrender.com/api/profile%5D(https://me-api-playground-jmou.onrender.com/api/profile)) | Retrieves the full professional JSON profile. |  |
-
 ### 🛠️ How to test manually
 
 You can test these endpoints using a simple **cURL** command in browser:
