@@ -4,14 +4,16 @@ const ProfileSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   education: String,
-  skills: [String],
-  projects: [{
-    title: String,
-    description: String,
-    tech: [String] ,
-    links: String
-  }],
-  // Essential for Track A Requirement 1a
+  skills: { type: [String], default: [] },
+  projects: {
+    type: [{
+      title: String,
+      description: String,
+      tech: [String],
+      links: String
+    }],
+    default: []
+  },
   work: [{ 
     company: String, 
     role: String, 
@@ -20,7 +22,7 @@ const ProfileSchema = new mongoose.Schema({
   links: { 
     github: String, 
     linkedin: String, 
-    portfolio: String // Required field
+    portfolio: String 
   }
 });
 
