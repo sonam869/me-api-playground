@@ -7,7 +7,7 @@ import SearchBar from './components/SearchBar';
 import ProjectForm from './components/ProjectForm';
 import './styles/App.css';
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://me-api-playground-jmou.onrender.com";
 
 function App() {
   // 1. All States
@@ -19,6 +19,8 @@ function App() {
   const [isAddingProject, setIsAddingProject] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  
 
   // 2. Initial Fetch (Read Requirement)
   useEffect(() => {
@@ -96,7 +98,7 @@ function App() {
     console.error("Search execution failed", err);
   }
 };
-  // 7. Skill Filter - New Logic
+  // 7. Skill Filter - 
   const handleSkillFilter = async (skill) => {
     try {
       const res = await axios.get(`${API_BASE}/projects?skill=${skill}`);
