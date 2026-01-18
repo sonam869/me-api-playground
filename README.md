@@ -73,9 +73,10 @@ The platform utilizes a centralized **Profile Collection** to ensure data integr
 ## 📸 Project Gallery
 
 <div align="center">
-<img src="[https://github.com/user-attachments/assets/de884754-3068-4162-91c8-b5ead54f3d1c](https://github.com/user-attachments/assets/de884754-3068-4162-91c8-b5ead54f3d1c)" width="45%" alt="Dashboard" />
-<img src="[https://github.com/user-attachments/assets/d96a0e4b-de37-4f92-8fb8-1d56434da4a6](https://github.com/user-attachments/assets/d96a0e4b-de37-4f92-8fb8-1d56434da4a6)" width="45%" alt="Projects View" />
-</div>
+  <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/afbf5816-836e-4a9d-9050-a71fd90ddbd4" />
+
+<img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/49adca76-25b4-48cd-97b7-78e2ecb1e737" />
+
 
 ---
 
