@@ -17,7 +17,8 @@ const ProfileSchema = new mongoose.Schema({
   work: [{ 
     company: String, 
     role: String, 
-    duration: String 
+    duration: String, 
+    description: String
   }],
   links: { 
     github: String, 

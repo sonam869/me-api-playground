@@ -67,8 +67,13 @@ exports.searchProjects = async (req, res) => {
 
     const keyword = searchTerm.toLowerCase();
     const matchedProjects = profile.projects.filter(project => {
-      const titleMatches = project.title.toLowerCase().includes(keyword);
-      const descriptionMatches = project.description?.toLowerCase().includes(keyword);
+      // Provide fallback empty strings to ensure .toLowerCase() doesn't crash
+      const title = project.title || "";
+      const description = project.description || "";
+      
+      const titleMatches = title.toLowerCase().includes(keyword);
+      const descriptionMatches = description.toLowerCase().includes(keyword);
+      
       return titleMatches || descriptionMatches;
     });
 
@@ -77,6 +82,7 @@ exports.searchProjects = async (req, res) => {
     res.status(500).json({ error: "Search failed" });
   }
 };
+
 
 // 1.b GET /skills/top - Returns the list of top featured skills
 exports.getTopSkills = async (req, res) => {
@@ -92,24 +98,30 @@ exports.getTopSkills = async (req, res) => {
   }
 };
 
-// 1.a Update/Add Project (CRUD Requirement)
+
+// 1.a Update Project (CRUD Requirement)
 exports.updateProject = async (req, res) => {
     try {
       const profile = await Profile.findOne();
       if (!profile) return res.status(404).json({ error: "Profile not found" });
   
       const { projectId } = req.params;
-      const projectIndex = profile.projects.findIndex(p => p._id.toString() === projectId);
+      
+      // Use the Mongoose .id() helper to find the subdocument directly
+      const project = profile.projects.id(projectId);
   
-      if (projectIndex === -1) return res.status(404).json({ error: "Project not found" });
+      if (!project) return res.status(404).json({ error: "Project not found" });
   
-      profile.projects[projectIndex] = { ...profile.projects[projectIndex], ...req.body };
+      // Update the fields of the found project with req.body data
+      Object.assign(project, req.body);
+      
       await profile.save();
       res.json(profile.projects);
     } catch (err) {
-      res.status(400).json({ error: "Update failed" });
+      res.status(400).json({ error: "Update failed", details: err.message });
     }
 };
+
 // 1.a POST /projects - Add a new project to your profile
 exports.addProject = async (req, res) => {
   try {

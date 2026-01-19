@@ -7,7 +7,8 @@ import SearchBar from './components/SearchBar';
 import ProjectForm from './components/ProjectForm';
 import './styles/App.css';
 
-const API_BASE = "https://me-api-playground-backend.onrender.com/api";
+// This will automatically use the live URL if set, otherwise it defaults to localhost
+const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
 function App() {
   // 1. All States
