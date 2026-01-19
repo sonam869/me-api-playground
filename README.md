@@ -96,22 +96,5 @@ curl https://me-api-playground-jmou.onrender.com/api/profile
 
 ---
 
-<img width="584" height="359" alt="image" src="https://github.com/user-attachments/assets/f0d584f0-8753-4a13-ac9f-207bea585127" />
 
 
----
-✨ Key Features
-Profile Management: Full CRUD operations for identity and technical skills.
-
-Project Portfolio: Management of project titles, descriptions, and tech stacks.
-
-Advanced Querying: Filter projects by specific skills or keywords via backend search logic.
-
-Health Monitoring: Integrated GET /api/health endpoint for liveness checks.
-
-Remarks
-Trade-offs: Decided to use Vercel and Render for deployment to ensure a zero-cost, scalable environment for the assessment.
-
-Design Choice: Implemented a modular backend structure to separate routes, controllers, and models for better maintainability.
-
-What's Next: Integration of JWT authentication for secure profile updates and an automated PDF resume generator.
