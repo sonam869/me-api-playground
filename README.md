@@ -101,5 +101,50 @@ curl https://me-api-playground-jmou.onrender.com/api/profile
 * **Responsive UI:** Fully adaptive design using modern CSS.
 * **State Management:** Efficient data flow using `useState` and `useEffect` hooks.
 * **Environment Security:** Sensitive credentials managed via `.env` for production safety.
+ME-API-PLAYGROUND/
+├── backend/                # Node.js & Express Server
+│   ├── controllers/        # Business logic for API endpoints
+│   ├── models/             # Mongoose schemas (Profile & Projects)
+│   ├── routes/             # API route definitions
+│   ├── .env                # Environment variables (Private)
+│   ├── seed.js             # Initial data population script
+│   ├── server.js           # Main entry point for the backend
+│   └── package.json
+├── frontend/               # React.js Application
+│   ├── public/             # Static assets
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   ├── styles/         # CSS/SCSS modules
+│   │   ├── App.js          # Main React component
+│   │   └── index.js        # React DOM entry point
+│   └── package.json
+└── README.md               # Project documentation
+
+
+---
+
+## Key Features
+Profile Management: Full CRUD operations for basic information and technical skills.
+
+Project Portfolio: Manage project details, including titles, descriptions, and tech stacks.
+
+Advanced Querying: Filter projects by specific skills and search through the portfolio using keywords.
+
+Health Monitoring: Integrated GET /api/health endpoint for liveness checks.
+
+## 📝 Remarks
+
+### 1. Technical Trade-offs
+* **Deployment Latency:** I chose **Render** for the backend and **Streamlit/Vercel** for the frontend to ensure a zero-cost hosting environment for this assessment. A known trade-off is the "cold start" delay on Render's free tier, where the API may take 30-50 seconds to spin up after inactivity.
+* **Local vs. Cloud processing:** For the RAG pipeline (Track B), I utilized **FastEmbed** and **FlashRank** locally within the app instance to avoid extra API costs and reduce network latency during the embedding and reranking phases.
+
+### 2. System Limits
+* **Database Constraints:** The current Pinecone index is running on a **Serverless (Starter)** plan, which is ideal for this demo but has limited throughput compared to provisioned pods.
+* **Context Window:** The LLM (Llama-3.1-8b) has a specific context window limit; therefore, I implemented a chunking strategy of 800-1200 tokens to ensure the most relevant information fits within the prompt without losing coherence.
+
+### 3. Future Improvements (What I'd do next)
+* **Authentication:** Implement **JWT-based secure routes** for the Me-API Playground to protect professional data from unauthorized modifications.
+* **Evaluation Framework:** Integrate **RAGAS** or a similar framework to quantitatively measure the "Faithfulness" and "Answer Relevance" of the RAG pipeline.
+* **Advanced Retrieval:** Add **Hybrid Search** (combining Keyword/BM25 with Vector search) to improve retrieval accuracy for specific technical terms.
 
 
