@@ -42,3 +42,4 @@ mongoose.connect(process.env.MONGO_URI)
     console.error("DB connection error. Please check your MONGO_URI in .env");
     console.error(err);
   });
+  module.exports = app;
